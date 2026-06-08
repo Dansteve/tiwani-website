@@ -11,20 +11,20 @@ export default function Home() {
     target: heroRef,
     offset: ["start start", "end start"]
   });
-  
+
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#F1EFE8' }}>
       {/* Navigation */}
-      <motion.nav 
+      <motion.nav
         className="fixed top-0 left-0 right-0 z-50 px-6 py-5"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        style={{ 
-          backgroundColor: 'rgba(241, 239, 232, 0.7)', 
+        style={{
+          backgroundColor: 'rgba(241, 239, 232, 0.7)',
           backdropFilter: 'blur(20px)',
           borderBottom: '1px solid rgba(15, 110, 86, 0.1)'
         }}
@@ -34,8 +34,8 @@ export default function Home() {
             <span className="text-2xl tracking-tight" style={{ color: '#04342C', fontWeight: '600' }}>
               TIWANI
             </span>
-            <motion.span 
-              className="w-2 h-2 rounded-full" 
+            <motion.span
+              className="w-2 h-2 rounded-full"
               style={{ backgroundColor: '#D85A30' }}
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
@@ -59,7 +59,7 @@ export default function Home() {
           <motion.div
             className="absolute top-20 right-10 w-96 h-96 rounded-full opacity-20 blur-3xl"
             style={{ backgroundColor: '#1D9E75' }}
-            animate={{ 
+            animate={{
               scale: [1, 1.2, 1],
               x: [0, 30, 0],
               y: [0, 20, 0]
@@ -69,7 +69,7 @@ export default function Home() {
           <motion.div
             className="absolute bottom-20 left-10 w-80 h-80 rounded-full opacity-20 blur-3xl"
             style={{ backgroundColor: '#0F6E56' }}
-            animate={{ 
+            animate={{
               scale: [1, 1.3, 1],
               x: [0, -20, 0],
               y: [0, 30, 0]
@@ -79,7 +79,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
-          <motion.div 
+          <motion.div
             className="space-y-10"
             style={{ y: heroY, opacity: heroOpacity }}
           >
@@ -88,7 +88,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <motion.div 
+              <motion.div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
                 style={{ backgroundColor: 'rgba(29, 158, 117, 0.15)', border: '1px solid rgba(29, 158, 117, 0.3)' }}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -101,8 +101,8 @@ export default function Home() {
                 </span>
               </motion.div>
 
-              <h1 className="text-6xl md:text-7xl lg:text-8xl mb-8" style={{ 
-                color: '#04342C', 
+              <h1 className="text-6xl md:text-7xl lg:text-8xl mb-8" style={{
+                color: '#04342C',
                 lineHeight: '1',
                 fontWeight: '700',
                 letterSpacing: '-0.02em'
@@ -110,17 +110,17 @@ export default function Home() {
                 What if nothing had to give?
               </h1>
             </motion.div>
-            
-            <motion.p 
-              className="text-xl md:text-2xl max-w-xl" 
+
+            <motion.p
+              className="text-xl md:text-2xl max-w-xl"
               style={{ color: '#5F5E5A', lineHeight: '1.6' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              You coordinate everything. You plan for every outcome. You carry the weight of a world not built for your reality.
+              You coordinate everything. You plan for every outcome. TIWANI is a Life Continuity platform built for your reality.
             </motion.p>
-            
+
             <motion.div
               className="flex flex-wrap gap-4"
               initial={{ opacity: 0, y: 20 }}
@@ -137,8 +137,8 @@ export default function Home() {
               </Link>
               <motion.button
                 className="px-10 py-5 rounded-full text-lg"
-                style={{ 
-                  backgroundColor: 'transparent', 
+                style={{
+                  backgroundColor: 'transparent',
                   color: '#0F6E56',
                   border: '2px solid #0F6E56',
                   fontWeight: '500'
@@ -165,7 +165,7 @@ export default function Home() {
                 animate={{ rotate: [0, 2, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               />
-              
+
               <div className="relative rounded-[40px] overflow-hidden shadow-2xl">
                 <ImageWithFallback
                   src={heroImage}
@@ -188,17 +188,17 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <div className="p-16 rounded-[40px] text-center space-y-8" style={{ backgroundColor: '#ffffff' }}>
-            <p className="text-3xl md:text-5xl" style={{ 
-              color: '#04342C', 
+            <p className="text-3xl md:text-5xl" style={{
+              color: '#04342C',
               lineHeight: '1.3',
               fontWeight: '600'
             }}>
               "And somewhere along the way, your own life got smaller."
             </p>
-            
+
             <div className="pt-8 space-y-4">
               <p className="text-xl" style={{ color: '#5F5E5A' }}>
-                We see that. We are building something about it.
+                We see that. We are building something for it.
               </p>
             </div>
           </div>
@@ -225,7 +225,7 @@ export default function Home() {
               style={{ backgroundColor: 'rgba(15, 110, 86, 0.2)' }}
             >
               <div className="text-center space-y-6 px-6">
-                <h3 className="text-4xl md:text-6xl" style={{ 
+                <h3 className="text-4xl md:text-6xl" style={{
                   color: '#ffffff',
                   fontWeight: '700',
                   textShadow: '0 2px 20px rgba(0,0,0,0.2)'
@@ -262,7 +262,7 @@ export default function Home() {
                 That matters.
               </p>
             </div>
-            
+
             <Link
               to="/waitlist"
               className="px-14 py-6 rounded-full text-xl flex items-center gap-3 mx-auto shadow-2xl"
@@ -282,8 +282,8 @@ export default function Home() {
             <div className="space-y-6">
               <div className="flex items-center gap-2">
                 <span className="text-3xl" style={{ color: '#ffffff', fontWeight: '700' }}>TIWANI</span>
-                <motion.span 
-                  className="w-3 h-3 rounded-full" 
+                <motion.span
+                  className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: '#D85A30' }}
                   animate={{ scale: [1, 1.3, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
@@ -293,28 +293,31 @@ export default function Home() {
                 Life Continuity · Launching 2026
               </p>
             </div>
-            
+
             <div className="flex flex-col md:items-end gap-6">
-              <a 
-                href="mailto:hello@tiwanilife.com" 
+              <a
+                href="mailto:hello@tiwanilife.com"
                 className="flex items-center gap-3 hover:opacity-80 transition-opacity text-lg"
                 style={{ color: '#ffffff' }}
               >
                 <Mail size={22} />
                 <span>hello@tiwanilife.com</span>
               </a>
-              
-              <a 
-                href="#" 
+
+              <a
+                href="https://www.linkedin.com/company/tiwani-life-continuity/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 hover:opacity-80 transition-opacity text-lg"
-                style={{ color: '#ffffff' }}
+                style={{ color: '#ffffff' }
+                }
               >
                 <Linkedin size={22} />
                 <span>Connect on LinkedIn</span>
               </a>
             </div>
           </div>
-          
+
           <div className="pt-12 border-t" style={{ borderColor: 'rgba(255, 255, 255, 0.1)' }}>
             <p className="text-center md:text-left" style={{ color: '#5F5E5A' }}>
               © 2026 TIWANI Ltd. All rights reserved.
