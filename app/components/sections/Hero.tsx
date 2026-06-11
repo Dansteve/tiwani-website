@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Reveal } from "../Reveal";
@@ -6,8 +7,11 @@ import { ContinuityCardPreview } from "./ContinuityCardPreview";
 // The hero. Keeps the strong existing line "What if nothing had to give?" and pairs it with a
 // product-true subhead grounded in Product.md (coordinate care without your own life narrowing).
 // The primary CTA is the coral waitlist button (coral used sparingly, Docs/Brand.md); the
-// secondary is a quiet teal-outline link. The right column is an on-brand Continuity Card
-// preview built from tokens, not a stock photo (no Figma image scaffolding).
+// secondary is a quiet teal-outline link. The right column grounds the abstract product in a
+// real, warm caregiving moment: a photograph in a token-framed panel with the on-brand Continuity
+// Card preview floating over it (the card stays token-built, not a stock image). The photo is a
+// committed local asset (public/images, attribution in public/images/ATTRIBUTIONS.md), sized with
+// explicit width/height so it reserves its space and never shifts the layout as it loads.
 export function Hero() {
   return (
     <section className="relative overflow-hidden px-4 pb-20 pt-32 sm:px-6 sm:pt-36 lg:pb-28 lg:pt-44">
@@ -70,8 +74,34 @@ export function Hero() {
           </Reveal>
         </div>
 
-        <Reveal delayMs={160} className="lg:justify-self-end">
-          <ContinuityCardPreview />
+        <Reveal delayMs={160} className="w-full lg:justify-self-end">
+          <div className="relative mx-auto w-full max-w-md lg:mx-0">
+            {/* The human moment: a warm, diverse caregiving photo in a rounded, token-bordered
+                frame with a soft teal tint, on-brand and corner-matched to the card below it. */}
+            <div className="overflow-hidden rounded-3xl border border-tiwani-mid/20 shadow-lg">
+              <Image
+                src="/images/care-hero.jpg"
+                alt="A mother sitting on a sofa at home with her two children, relaxed and close together"
+                width={1600}
+                height={1062}
+                priority
+                sizes="(min-width: 1024px) 28rem, (min-width: 640px) 28rem, 90vw"
+                className="h-auto w-full object-cover"
+              />
+              {/* A very soft teal wash so the photo sits in the brand world without recolouring it. */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 rounded-3xl"
+                style={{ background: "linear-gradient(180deg, transparent 55%, rgba(4,52,44,0.18))" }}
+              />
+            </div>
+
+            {/* The token-built Continuity Card preview, floated over the lower edge of the photo on
+                larger screens, stacked beneath it on small screens so nothing is clipped. */}
+            <div className="mt-5 sm:-mt-16 sm:ml-auto sm:max-w-xs sm:pr-2 lg:-mt-20">
+              <ContinuityCardPreview />
+            </div>
+          </div>
         </Reveal>
       </div>
     </section>

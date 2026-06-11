@@ -71,11 +71,34 @@ export interface SubmitResult {
   sheet: boolean;
 }
 
-// Same pattern the form enforces; kept here so validation has one definition.
-const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+// Email validation, kept in one place so the form and the dual-write agree on what "valid" means.
+// The goal is a robust practical check, not full RFC 5322: accept the addresses real people type,
+// reject the obvious junk, and always require a dotted domain with a real TLD (so "jane@example"
+// and "jane@localhost" are rejected). The shape is one local part, one "@", one domain.
+//   - the whole address is trimmed first and capped at 254 chars (the SMTP practical maximum);
+//   - the local part is 1..64 chars of the allowed set, with no leading, trailing, or doubled dot;
+//   - the domain is dot-separated labels (letters, digits, hyphen; no leading/trailing hyphen),
+//     ending in a TLD of at least two letters, with no doubled dot anywhere.
+const EMAIL_PATTERN =
+  /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
+
+const MAX_EMAIL_LENGTH = 254; // RFC 5321 practical maximum for an email address.
+const MAX_LOCAL_LENGTH = 64; // RFC 5321 maximum for the local part (before the "@").
 
 export function isValidEmail(email: string): boolean {
-  return EMAIL_PATTERN.test(email.trim());
+  const trimmed = email.trim();
+
+  // Cheap structural guards first, so the regex only ever runs on a plausible string.
+  if (!trimmed || trimmed.length > MAX_EMAIL_LENGTH) return false;
+  if (/\s/.test(trimmed)) return false; // no internal whitespace
+  if (trimmed.includes("..")) return false; // no consecutive dots anywhere
+
+  const atIndex = trimmed.indexOf("@");
+  // Exactly one "@", and a non-empty local part within the length cap.
+  if (atIndex <= 0 || atIndex !== trimmed.lastIndexOf("@")) return false;
+  if (atIndex > MAX_LOCAL_LENGTH) return false;
+
+  return EMAIL_PATTERN.test(trimmed);
 }
 
 // Submit is allowed only with a valid email and at least one role (matches the form's disabled

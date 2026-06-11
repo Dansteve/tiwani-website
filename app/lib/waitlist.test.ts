@@ -8,21 +8,74 @@ import {
 } from "./waitlist";
 
 describe("isValidEmail", () => {
-  it("accepts a normal address", () => {
-    expect(isValidEmail("jane.doe@example.com")).toBe(true);
-    expect(isValidEmail("a+tag@sub.domain.co.uk")).toBe(true);
+  it("accepts ordinary, real-world addresses", () => {
+    const valid = [
+      "jane.doe@example.com",
+      "a+tag@sub.domain.co.uk",
+      "first.last@example.org",
+      "user_name@example.io",
+      "user-name@example-domain.com",
+      "x@example.com", // single-char local part
+      "name@example.museum", // long TLD
+      "1234567890@example.com",
+      "carer.123+waitlist@mail.example.co.uk",
+      "JANE.DOE@EXAMPLE.COM", // case-insensitive
+    ];
+    for (const email of valid) {
+      expect(isValidEmail(email), `${email} should be valid`).toBe(true);
+    }
   });
 
-  it("rejects malformed addresses", () => {
+  it("rejects empty and whitespace-only input", () => {
     expect(isValidEmail("")).toBe(false);
-    expect(isValidEmail("jane@")).toBe(false);
-    expect(isValidEmail("jane@example")).toBe(false);
-    expect(isValidEmail("@example.com")).toBe(false);
+    expect(isValidEmail("   ")).toBe(false);
+  });
+
+  it("rejects addresses missing a part or the @", () => {
+    expect(isValidEmail("janeexample.com")).toBe(false); // no @
+    expect(isValidEmail("jane@")).toBe(false); // no domain
+    expect(isValidEmail("@example.com")).toBe(false); // no local part
+    expect(isValidEmail("jane@@example.com")).toBe(false); // two @
+    expect(isValidEmail("jane@doe@example.com")).toBe(false); // two @
+  });
+
+  it("requires a dotted domain with a real TLD", () => {
+    expect(isValidEmail("jane@example")).toBe(false); // no dot / TLD
+    expect(isValidEmail("jane@localhost")).toBe(false); // no TLD
+    expect(isValidEmail("jane@example.c")).toBe(false); // single-char TLD
+    expect(isValidEmail("jane@example.123")).toBe(false); // numeric TLD
+    expect(isValidEmail("jane@.com")).toBe(false); // empty domain label
+    expect(isValidEmail("jane@example.")).toBe(false); // trailing dot, no TLD
+  });
+
+  it("rejects whitespace inside the address", () => {
     expect(isValidEmail("jane example.com")).toBe(false);
+    expect(isValidEmail("jane @example.com")).toBe(false);
+    expect(isValidEmail("jane@ example.com")).toBe(false);
+    expect(isValidEmail("jane@exa mple.com")).toBe(false);
+    expect(isValidEmail("jane\t@example.com")).toBe(false);
+  });
+
+  it("rejects leading, trailing, or consecutive dots", () => {
+    expect(isValidEmail(".jane@example.com")).toBe(false);
+    expect(isValidEmail("jane.@example.com")).toBe(false);
+    expect(isValidEmail("jane..doe@example.com")).toBe(false);
+    expect(isValidEmail("jane@example..com")).toBe(false);
+    expect(isValidEmail("jane@-example.com")).toBe(false); // leading hyphen label
+    expect(isValidEmail("jane@example-.com")).toBe(false); // trailing hyphen label
+  });
+
+  it("rejects an address longer than 254 chars or a local part over 64", () => {
+    const longLocal = "a".repeat(65);
+    expect(isValidEmail(`${longLocal}@example.com`)).toBe(false);
+    const longAddress = `${"a".repeat(250)}@example.com`;
+    expect(longAddress.length).toBeGreaterThan(254);
+    expect(isValidEmail(longAddress)).toBe(false);
   });
 
   it("trims surrounding whitespace before validating", () => {
     expect(isValidEmail("  jane@example.com  ")).toBe(true);
+    expect(isValidEmail("\n jane@example.com \t")).toBe(true);
   });
 });
 

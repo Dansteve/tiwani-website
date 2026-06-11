@@ -1,10 +1,14 @@
+import Image from "next/image";
 import { Baby, HeartHandshake, Stethoscope, Users, type LucideIcon } from "lucide-react";
 import { Reveal } from "../Reveal";
 
 // Who it is for: Coordinators across the lifespan, child and adult/elder care (Docs/Decisions.md
 // D8). The MVP starts with child care, but the platform's scope is additional-needs caregiving
 // across the lifespan, which is what the waitlist gauges. Non-clinical, private, calm. The four
-// contexts mirror the waitlist care-context options so the message and the form agree.
+// contexts mirror the waitlist care-context options so the message and the form agree. A warm,
+// diverse intergenerational photo (an older adult walking with a young relative) heads the right
+// column to make the lifespan span visible (committed local asset, attribution in
+// public/images/ATTRIBUTIONS.md; a fixed-aspect frame so it reserves its space, no layout shift).
 interface Audience {
   icon: LucideIcon;
   label: string;
@@ -50,23 +54,44 @@ export function AudienceSection() {
             </Reveal>
           </div>
 
-          <ul className="grid gap-4 sm:grid-cols-2">
-            {AUDIENCES.map((audience, i) => {
-              const Icon = audience.icon;
-              return (
-                <Reveal as="li" key={audience.label} delayMs={i * 70}>
-                  <div className="flex h-full items-start gap-3 rounded-2xl border border-border bg-background p-5">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-tiwani-mid/15 text-primary">
-                      <Icon className="size-5" aria-hidden="true" />
-                    </span>
-                    <span className="text-base font-medium leading-snug text-tiwani-dark">
-                      {audience.label}
-                    </span>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </ul>
+          <div className="space-y-5">
+            <Reveal>
+              {/* Fixed-aspect band: the portrait photo crops to a calm landscape strip via
+                  object-cover, so it never distorts and the box reserves its height up front. */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-tiwani-mid/20 shadow-md">
+                <Image
+                  src="/images/care-lifespan.jpg"
+                  alt="An older man walking outdoors hand in hand with a young girl"
+                  fill
+                  sizes="(min-width: 1024px) 36rem, 90vw"
+                  className="object-cover object-top"
+                />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0"
+                  style={{ background: "linear-gradient(180deg, transparent 62%, rgba(4,52,44,0.16))" }}
+                />
+              </div>
+            </Reveal>
+
+            <ul className="grid gap-4 sm:grid-cols-2">
+              {AUDIENCES.map((audience, i) => {
+                const Icon = audience.icon;
+                return (
+                  <Reveal as="li" key={audience.label} delayMs={i * 70}>
+                    <div className="flex h-full items-start gap-3 rounded-2xl border border-border bg-background p-5">
+                      <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-tiwani-mid/15 text-primary">
+                        <Icon className="size-5" aria-hidden="true" />
+                      </span>
+                      <span className="text-base font-medium leading-snug text-tiwani-dark">
+                        {audience.label}
+                      </span>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

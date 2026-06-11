@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import {
+  isValidEmail,
   submitWaitlist,
   validateWaitlist,
   WAITLIST_ROLES,
@@ -29,6 +30,19 @@ export function WaitlistForm() {
   const [rolesError, setRolesError] = useState<string | undefined>();
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Returns the same per-field message validateWaitlist would, so the on-blur and on-submit errors
+  // read identically. Empty input on blur is left silent (no error until the field has content or
+  // the form is submitted), so the user is not scolded for a field they have not finished.
+  const emailErrorFor = (value: string): string | undefined => {
+    const trimmed = value.trim();
+    if (!trimmed) return undefined;
+    return isValidEmail(trimmed) ? undefined : "Invalid email address";
+  };
+
+  const onEmailBlur = () => {
+    setEmailError(emailErrorFor(email));
+  };
 
   const toggleRole = (role: string) => {
     setRolesError(undefined);
@@ -108,14 +122,16 @@ export function WaitlistForm() {
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
+            // Clear the error as the user corrects it; re-checked on blur and on submit.
             if (emailError) setEmailError(undefined);
           }}
+          onBlur={onEmailBlur}
           aria-invalid={emailError ? true : undefined}
           aria-describedby={emailError ? "email-error" : undefined}
           className="h-12 rounded-xl px-4 text-base"
         />
         {emailError && (
-          <p id="email-error" className="text-sm text-destructive">
+          <p id="email-error" role="alert" className="text-sm text-destructive">
             {emailError}
           </p>
         )}
@@ -164,7 +180,7 @@ export function WaitlistForm() {
           })}
         </div>
         {rolesError && (
-          <p className="mt-2 text-sm text-destructive">{rolesError}</p>
+          <p role="alert" className="mt-2 text-sm text-destructive">{rolesError}</p>
         )}
       </fieldset>
 
