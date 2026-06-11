@@ -115,7 +115,7 @@ export default function Waitlist() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
             <div className="space-y-4">
               <Label htmlFor="email" className="text-lg font-semibold" style={{ color: '#04342C' }}>
-                Email address <span className="text-red-500">*</span>
+                Email address <span className="text-destructive">*</span>
               </Label>
               <Input
                 id="email"
@@ -130,12 +130,12 @@ export default function Waitlist() {
                   }
                 })}
               />
-              {errors.email && <p className="text-sm text-red-500">{errors.email.message || "Please enter a valid email address."}</p>}
+              {errors.email && <p className="text-sm text-destructive">{errors.email.message || "Please enter a valid email address."}</p>}
             </div>
 
             <div className="space-y-6">
               <Label className="text-lg font-semibold block" style={{ color: '#04342C' }}>
-                Who are you coordinating care for? <span className="text-red-500">*</span> <span className="text-sm font-normal text-slate-400 block mt-1">(Select all that apply)</span>
+                Who are you coordinating care for? <span className="text-destructive">*</span> <span className="text-sm font-normal text-muted-foreground block mt-1">(Select all that apply)</span>
               </Label>
               
               <div className="grid gap-4">
@@ -145,15 +145,15 @@ export default function Waitlist() {
                     <div 
                       key={role}
                       onClick={() => toggleRole(role)}
-                      className="flex items-start space-x-4 p-5 rounded-2xl border-2 transition-all cursor-pointer hover:bg-slate-50 select-none group"
+                      className="flex items-start space-x-4 p-5 rounded-2xl border-2 transition-all cursor-pointer hover:bg-muted select-none group"
                       style={{ 
-                        borderColor: isChecked ? '#1D9E75' : 'rgba(0,0,0,0.05)',
+                        borderColor: isChecked ? '#1D9E75' : 'var(--border)',
                         backgroundColor: isChecked ? 'rgba(29, 158, 117, 0.03)' : '#ffffff'
                       }}
                     >
                       <div 
                         className={`mt-1 size-5 shrink-0 rounded-[4px] border-2 flex items-center justify-center transition-colors ${
-                          isChecked ? "bg-[#1D9E75] border-[#1D9E75]" : "bg-white border-slate-200 group-hover:border-slate-300"
+                          isChecked ? "bg-[#1D9E75] border-[#1D9E75]" : "bg-white border-border group-hover:border-foreground/25"
                         }`}
                       >
                         {isChecked && <CheckIcon className="size-3.5 text-white" strokeWidth={3} />}
@@ -165,7 +165,7 @@ export default function Waitlist() {
                   );
                 })}
               </div>
-              {(selectedRoles || []).length === 0 && <p className="text-sm text-amber-600 mt-2">Please select at least one option.</p>}
+              {(selectedRoles || []).length === 0 && <p className="text-sm text-warning mt-2">Please select at least one option.</p>}
             </div>
 
             <Button
@@ -173,7 +173,7 @@ export default function Waitlist() {
               disabled={isLoading || (selectedRoles || []).length === 0}
               className="w-full h-20 rounded-[30px] text-xl font-bold flex items-center justify-center gap-3 shadow-xl transition-all"
               style={{ 
-                backgroundColor: (selectedRoles || []).length > 0 ? '#D85A30' : '#E5E7EB', 
+                backgroundColor: (selectedRoles || []).length > 0 ? '#D85A30' : 'var(--switch-background)',
                 color: '#ffffff'
               }}
             >
