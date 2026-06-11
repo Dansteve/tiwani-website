@@ -32,6 +32,29 @@ export function SiteFooter() {
               <Linkedin className="size-5" aria-hidden="true" />
               Connect on LinkedIn
             </a>
+            <a
+              href="https://www.instagram.com/reel/DYmjsCeCCkM/?igsh=OTdsMWFjZDFrZ2J5"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TIWANI on Instagram"
+              className="inline-flex items-center gap-3 text-sm text-white/90 transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="size-5"
+                aria-hidden="true"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+              Follow on Instagram
+            </a>
           </div>
         </div>
 
