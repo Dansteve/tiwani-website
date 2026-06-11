@@ -1,14 +1,10 @@
 import { defineConfig } from "vitest/config";
-import path from "path";
 
+// The waitlist pure functions (validation + both field mappings) are unit tested in Node, with
+// no DOM and no network, so the default environment is fine. Keep the suite fast and isolated.
 export default defineConfig({
   test: {
+    include: ["app/**/*.test.{ts,tsx}"],
     environment: "node",
-    include: ["src/**/*.{test,spec}.{ts,tsx}"],
-  },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
   },
 });

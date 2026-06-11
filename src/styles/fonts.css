@@ -1,3 +1,0 @@
-/* TIWANI shared font system: Inter (parity with tiwani-app, which loads Inter via next/font). */
-/* The website is Vite, so Inter is sourced here via Google Fonts. Token name and fallback match the app. */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap');

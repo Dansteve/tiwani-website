@@ -15,6 +15,7 @@ dist-ssr
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+.claude
 .idea
 .DS_Store
 *.suo
@@ -23,11 +24,14 @@ dist-ssr
 *.sln
 *.sw?
 
-# Vite / Build
+# Next.js / Build
 build
 dist
+.next
+out
 .vercel
 .netlify
+.firebase
 
 # Environment variables
 .env
