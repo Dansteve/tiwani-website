@@ -4,6 +4,7 @@ import { Linkedin, Mail, ArrowRight, Sparkles } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useRef } from "react";
 import { Link } from "react-router";
+import { APP_URL } from "../lib/config";
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
@@ -41,14 +42,24 @@ export default function Home() {
               transition={{ duration: 2, repeat: Infinity }}
             />
           </div>
-          <Link
-            to="/waitlist"
-            className="px-8 py-3 rounded-full text-sm flex items-center gap-2 shadow-lg"
-            style={{ backgroundColor: '#D85A30', color: '#ffffff', fontWeight: '500' }}
-          >
-            Join waitlist
-            <ArrowRight size={16} />
-          </Link>
+          <div className="flex items-center gap-3">
+            <a
+              href={APP_URL}
+              className="px-6 py-3 rounded-full text-sm hidden sm:inline-flex items-center gap-2 transition-opacity hover:opacity-80"
+              style={{ backgroundColor: 'transparent', color: '#0F6E56', border: '2px solid #0F6E56', fontWeight: '500' }}
+            >
+              Go to dashboard
+              <ArrowRight size={16} />
+            </a>
+            <Link
+              to="/waitlist"
+              className="px-8 py-3 rounded-full text-sm flex items-center gap-2 shadow-lg"
+              style={{ backgroundColor: '#D85A30', color: '#ffffff', fontWeight: '500' }}
+            >
+              Join waitlist
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </motion.nav>
 
