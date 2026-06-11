@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:run": "vitest run",
-    "deploy": "next build && firebase deploy --only hosting"
+    "deploy": "NEXT_PUBLIC_APP_URL=https://app-tiwani.web.app next build && firebase deploy --only hosting"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "1.1.4",
