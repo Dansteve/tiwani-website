@@ -5,16 +5,19 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
-import { Checkbox } from "../components/ui/checkbox";
 import { Label } from "../components/ui/label";
 import { toast } from "sonner";
+import { submitToWaitlist, WAITLIST_ROLES } from "../lib/waitlist";
+import { trackWaitlistConversion } from "../lib/analytics";
 
 interface WaitlistFormValues {
   email: string;
   roles: string[];
 }
 
-import { submitToWaitlist } from "../lib/waitlist";
+// The displayed options come from the same source as the sheet mapping, so the form and
+// the field mapping in lib/waitlist.ts cannot drift apart.
+const ROLE_OPTIONS = Object.values(WAITLIST_ROLES);
 
 export default function Waitlist() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -42,9 +45,10 @@ export default function Waitlist() {
     
     try {
       await submitToWaitlist(data);
+      trackWaitlistConversion(data.roles.length);
       setIsSubmitted(true);
       toast.success("Thank you for joining our waitlist!");
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
@@ -135,12 +139,7 @@ export default function Waitlist() {
               </Label>
               
               <div className="grid gap-4">
-                {[
-                  "A child or young person with additional needs",
-                  "An older adult",
-                  "Someone with a long-term condition",
-                  "I work with caregiving families professionally"
-                ].map((role) => {
+                {ROLE_OPTIONS.map((role) => {
                   const isChecked = (selectedRoles || []).includes(role);
                   return (
                     <div 
