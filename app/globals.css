@@ -61,7 +61,10 @@
   --muted-foreground: #5F5E5A;
   --accent: #E1F5EE;
   --accent-foreground: #04342C;
-  --destructive: #D85A30;
+  /* CTA/button coral: a slightly deeper coral than the decorative --tiwani-coral (#D85A30) so white
+     button text meets WCAG AA (4.73:1 vs 3.87:1). The brand coral stays --tiwani-coral for the logo
+     dot + decorative accents. (Task 11 a11y, 2026-06-12.) */
+  --destructive: #C24F26;
   --destructive-foreground: #ffffff;
 
   /* Dashboard status semantics (Product.md §4.3 / §4.6 / §4.9), harmonized to the palette.
@@ -287,6 +290,45 @@
   .reveal.is-visible {
     opacity: 1;
     transform: none;
+  }
+}
+
+/*
+  Legal + funding page prose (the Terms / Privacy / Cookie / Accessibility / Support pages, via the
+  LegalPage wrapper). The one shared long-form text style so the pages read consistently and on
+  brand: warm body, teal links, a clear heading rhythm. Type comes from the shared scale (Brand.md):
+  h2 = text-xl (24px), h3 = text-lg (20px), body = 16px base.
+*/
+@layer components {
+  .legal-prose {
+    @apply text-base leading-relaxed text-foreground;
+  }
+  .legal-prose > h2:first-child {
+    @apply mt-0;
+  }
+  .legal-prose h2 {
+    @apply mt-12 mb-3 scroll-mt-28 text-xl font-semibold text-tiwani-dark;
+  }
+  .legal-prose h3 {
+    @apply mt-8 mb-2 text-lg font-medium text-tiwani-dark;
+  }
+  .legal-prose p {
+    @apply mb-4;
+  }
+  .legal-prose ul {
+    @apply mb-4 ml-5 list-disc space-y-2 marker:text-primary;
+  }
+  .legal-prose ol {
+    @apply mb-4 ml-5 list-decimal space-y-2;
+  }
+  .legal-prose li {
+    @apply leading-relaxed;
+  }
+  .legal-prose a {
+    @apply font-medium text-primary underline underline-offset-2 hover:opacity-80;
+  }
+  .legal-prose strong {
+    @apply font-semibold text-tiwani-dark;
   }
 }
 

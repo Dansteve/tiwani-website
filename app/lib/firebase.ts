@@ -1,9 +1,11 @@
 // Firebase is hosting and analytics only on this site (no auth, no Firestore writes). The web
 // config is public by nature (it ships to every browser), so it stays inline. Analytics is
 // initialized lazily in the browser only: getAnalytics needs window and the measurement
-// environment, so on the server (static export / SSR) it is null and every call no-ops.
+// environment, so on the server (static export / SSR) it is null and every call no-ops. It also
+// stays off until the visitor opts in via the cookie banner (PECR, lib/consent.ts).
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAnalytics, isSupported, type Analytics } from "firebase/analytics";
+import { hasAnalyticsConsent } from "./consent";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBJqcRLp_AZffapS6q4hRWnTLOTgp3fkXI",
@@ -24,6 +26,10 @@ let analyticsInstance: Analytics | null = null;
 // null on the server and where analytics is unsupported, so the caller can simply skip tracking.
 export async function getAnalyticsClient(): Promise<Analytics | null> {
   if (typeof window === "undefined") return null;
+  // PECR: never initialize GA without prior opt-in consent (lib/consent.ts), so the _ga cookie is
+  // never set until the visitor accepts. Re-checked every call, so analytics begins the moment
+  // they opt in, and is not re-created if they later withdraw.
+  if (!hasAnalyticsConsent()) return null;
   if (analyticsInstance) return analyticsInstance;
   if (!(await isSupported())) return null;
   analyticsInstance = getAnalytics(app);
