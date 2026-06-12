@@ -61,7 +61,10 @@
   --muted-foreground: #5F5E5A;
   --accent: #E1F5EE;
   --accent-foreground: #04342C;
-  --destructive: #D85A30;
+  /* CTA/button coral: a slightly deeper coral than the decorative --tiwani-coral (#D85A30) so white
+     button text meets WCAG AA (4.73:1 vs 3.87:1). The brand coral stays --tiwani-coral for the logo
+     dot + decorative accents. (Task 11 a11y, 2026-06-12.) */
+  --destructive: #C24F26;
   --destructive-foreground: #ffffff;
 
   /* Dashboard status semantics (Product.md §4.3 / §4.6 / §4.9), harmonized to the palette.
