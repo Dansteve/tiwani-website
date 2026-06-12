@@ -1,5 +1,22 @@
+import Link from "next/link";
 import { Linkedin, Mail } from "lucide-react";
 import { Wordmark } from "./Wordmark";
+import { CookieSettingsButton } from "./CookieSettingsButton";
+
+// The footer's legal + policy links (the pages stood up as drafts, pending solicitor + DPO review).
+const POLICY_LINKS = [
+  { href: "/legal/privacy", label: "Privacy Policy" },
+  { href: "/legal/terms", label: "Terms & Conditions" },
+  { href: "/legal/cookies", label: "Cookie Policy" },
+  { href: "/legal/accessibility", label: "Accessibility" },
+  { href: "/support", label: "Support our work" },
+] as const;
+
+// text-sm + font-normal are set explicitly so the CookieSettingsButton (a <button>, which the
+// globals.css base layer would otherwise render at 16px / weight 500 / line-height 1.5) matches
+// the 14px / normal <a> links exactly and sits on the same baseline.
+const FOOTER_LINK_CLASS =
+  "text-sm font-normal leading-5 text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
 // The footer: the wordmark on the Deep Teal anchor surface, the contact email, and LinkedIn.
 // Deep Teal #04342C is the brand's dark anchor (Docs/Brand.md); text is on-surface light.
@@ -58,7 +75,23 @@ export function SiteFooter() {
         </div>
 
         <div className="border-t border-white/10 pt-8">
-          <p className="text-sm text-white/60">
+          <nav
+            aria-label="Legal and policies"
+            className="flex flex-wrap items-baseline gap-x-6 gap-y-3 text-sm"
+          >
+            {POLICY_LINKS.map((link) => (
+              <Link key={link.href} href={link.href} className={FOOTER_LINK_CLASS}>
+                {link.label}
+              </Link>
+            ))}
+            <CookieSettingsButton className={FOOTER_LINK_CLASS} />
+          </nav>
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-white/70">
+            TIWANI is a non-clinical planning tool, not a medical, emergency, or crisis service. In
+            an emergency, or if someone is at risk of harm, call 999. For urgent health concerns,
+            call NHS 111.
+          </p>
+          <p className="mt-6 text-sm text-white/60">
             &copy; 2026 TIWANI Ltd. All rights reserved.
           </p>
         </div>
