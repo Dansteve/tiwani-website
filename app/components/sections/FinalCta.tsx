@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "../Reveal";
+import { Button } from "../ui/button";
 
 // The closing call to action, on the Deep Teal anchor surface for one calm, confident moment
 // before the footer. Keeps the strong existing lines "Stay connected. Stay whole." and "You are
@@ -25,13 +26,19 @@ export function FinalCta() {
 
         <Reveal delayMs={160}>
           <div className="mt-10 flex justify-center">
-            <Link
-              href="/waitlist"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-destructive px-8 py-4 text-base font-medium text-destructive-foreground shadow-sm transition-colors hover:bg-tiwani-coral/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            {/* On the Deep Teal anchor surface, the focus ring is white for contrast (the teal ring
+                would vanish here); the rest of the CTA is the shared primitive. */}
+            <Button
+              asChild
+              variant="cta-primary"
+              size="cta"
+              className="px-8 focus-visible:ring-white"
             >
-              Join the waitlist
-              <ArrowRight className="size-5" aria-hidden="true" />
-            </Link>
+              <Link href="/waitlist">
+                Join the waitlist
+                <ArrowRight className="size-5" aria-hidden="true" />
+              </Link>
+            </Button>
           </div>
         </Reveal>
       </div>

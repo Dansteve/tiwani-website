@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Wordmark } from "./Wordmark";
 import { DashboardLink } from "./DashboardLink";
+import { Button } from "./ui/button";
 
 // The fixed top navigation: the wordmark, a quiet "Go to dashboard" link to the tiwani-app (a
 // plain cross-origin navigation, the two are separate Firebase sites), and the coral "Join
@@ -19,14 +20,13 @@ export function SiteHeader() {
         </Link>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <DashboardLink className="hidden items-center gap-2 rounded-full border border-primary px-5 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:inline-flex" />
-          <Link
-            href="/waitlist"
-            className="inline-flex items-center gap-2 rounded-full bg-destructive px-5 py-2.5 text-sm font-medium text-destructive-foreground shadow-sm transition-colors hover:bg-tiwani-coral/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-          >
-            Join waitlist
-            <ArrowRight className="size-4" aria-hidden="true" />
-          </Link>
+          <DashboardLink className="hidden sm:inline-flex" />
+          <Button asChild variant="cta-primary" size="cta-sm">
+            <Link href="/waitlist">
+              Join waitlist
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+          </Button>
         </div>
       </nav>
     </header>

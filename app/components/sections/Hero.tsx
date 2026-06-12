@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Reveal } from "../Reveal";
+import { Button } from "../ui/button";
 import { ContinuityCardPreview } from "./ContinuityCardPreview";
 
 // The hero. Keeps the strong existing line "What if nothing had to give?" and pairs it with a
@@ -53,19 +54,15 @@ export function Hero() {
 
           <Reveal delayMs={180}>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link
-                href="/waitlist"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-destructive px-7 py-3.5 text-base font-medium text-destructive-foreground shadow-sm transition-colors hover:bg-tiwani-coral/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              >
-                Join the waitlist
-                <ArrowRight className="size-5" aria-hidden="true" />
-              </Link>
-              <a
-                href="#what-tiwani-does"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-primary px-7 py-3.5 text-base font-medium text-primary transition-colors hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              >
-                See how it works
-              </a>
+              <Button asChild variant="cta-primary" size="cta">
+                <Link href="/waitlist">
+                  Join the waitlist
+                  <ArrowRight className="size-5" aria-hidden="true" />
+                </Link>
+              </Button>
+              <Button asChild variant="cta-secondary" size="cta">
+                <a href="#what-tiwani-does">See how it works</a>
+              </Button>
             </div>
           </Reveal>
 

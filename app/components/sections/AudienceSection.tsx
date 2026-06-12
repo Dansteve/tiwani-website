@@ -23,7 +23,7 @@ const AUDIENCES: Audience[] = [
 
 export function AudienceSection() {
   return (
-    <section className="bg-card px-4 py-20 sm:px-6 lg:py-28">
+    <section className="px-4 py-20 sm:px-6 lg:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>
@@ -79,7 +79,7 @@ export function AudienceSection() {
                 const Icon = audience.icon;
                 return (
                   <Reveal as="li" key={audience.label} delayMs={i * 70}>
-                    <div className="flex h-full items-start gap-3 rounded-2xl border border-border bg-background p-5">
+                    <div className="flex h-full items-start gap-3 rounded-xl border border-border bg-card p-5">
                       <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-tiwani-mid/15 text-primary">
                         <Icon className="size-5" aria-hidden="true" />
                       </span>

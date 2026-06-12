@@ -19,12 +19,23 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
+        // The marketing pill CTAs, expressed once so a coral "Join the waitlist" button is the same
+        // component everywhere (header, hero, final CTA) instead of a hand-rolled <a>. Coral is the
+        // sparing accent (Docs/Brand.md); the quiet teal-outline pairing is the secondary.
+        "cta-primary":
+          "rounded-full bg-destructive text-destructive-foreground shadow-sm hover:bg-tiwani-coral/90",
+        "cta-secondary":
+          "rounded-full border border-primary text-primary hover:bg-primary/5",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
         lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
         icon: "size-9 rounded-md",
+        // 44px-floor touch sizes (WCAG 2.1 AA tap targets, Docs/Brand.md), parity with the app's
+        // Button. `cta` is the prominent landing CTA; `cta-sm` the compact header CTA.
+        cta: "h-12 rounded-full px-7 text-base has-[>svg]:px-7",
+        "cta-sm": "h-11 rounded-full px-5 text-sm has-[>svg]:px-5",
       },
     },
     defaultVariants: {
