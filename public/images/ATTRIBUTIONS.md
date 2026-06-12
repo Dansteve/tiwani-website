@@ -13,6 +13,6 @@ and layout shift). All three are warm, human, diverse, non-clinical scenes that 
 
 | File | Aspect | Photographer | Unsplash photo |
 | --- | --- | --- | --- |
-| `care-hero.jpg` | 1600x1062 (landscape) | Trust "Tru" Katsande (@iamtru) | https://unsplash.com/photos/a-woman-sitting-on-a-couch-with-two-children-jv8SELgSKAs |
+| `care-hero.jpg` | 1600x1062 (landscape) | Vitaly Gariev (@silverkblack) | https://unsplash.com/photos/mother-and-daughter-share-a-warm-loving-hug-VzqEWn1uxaM |
 | `care-connection.jpg` | 1600x2400 (portrait) | Lucas Favre (@we_are_rising) | https://unsplash.com/photos/a-child-on-a-mans-back-S0dxleXAVOU |
 | `care-lifespan.jpg` | 1600x2400 (portrait) | Nate Banks (@nate_banks) | https://unsplash.com/photos/a-man-and-a-little-girl-walking-down-the-street-dHDUFf9ggb4 |

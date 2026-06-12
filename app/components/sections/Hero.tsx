@@ -47,9 +47,6 @@ export function Hero() {
               and keep participating in life, so work, friendships, family, culture and
               community do not quietly disappear.
             </p>
-            <p className="mt-3 text-base font-medium text-tiwani-dark">
-              Private and non-clinical.
-            </p>
           </Reveal>
 
           <Reveal delayMs={180}>
@@ -76,24 +73,27 @@ export function Hero() {
 
         <Reveal delayMs={160} className="w-full lg:justify-self-end">
           <div className="relative mx-auto w-full max-w-md lg:mx-0">
-            {/* The human moment: a warm, diverse caregiving photo in a rounded, token-bordered
-                frame with a soft teal tint, on-brand and corner-matched to the card below it. */}
-            <div className="overflow-hidden rounded-3xl border border-tiwani-mid/20 shadow-lg">
-              <Image
-                src="/images/care-hero.jpg"
-                alt="A mother sitting on a sofa at home with her two children, relaxed and close together"
-                width={1600}
-                height={1062}
-                priority
-                sizes="(min-width: 1024px) 28rem, (min-width: 640px) 28rem, 90vw"
-                className="h-auto w-full object-cover"
-              />
-              {/* A very soft teal wash so the photo sits in the brand world without recolouring it. */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 rounded-3xl"
-                style={{ background: "linear-gradient(180deg, transparent 55%, rgba(4,52,44,0.18))" }}
-              />
+            {/* The human moment: a warm caregiving photo set in a bigger green frame that echoes the
+                Continuity Card below it, a padded mid-teal mat with an inset ring so the brand green
+                reads clearly without going harsh. The radii are concentric (2rem mat, p-4, 1rem photo). */}
+            <div className="rounded-[2rem] bg-tiwani-mid/20 p-4 shadow-xl ring-1 ring-inset ring-tiwani-mid/40">
+              <div className="relative overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/care-hero.jpg"
+                  alt="A mother and her daughter sharing a warm hug at home, both smiling"
+                  width={1600}
+                  height={1062}
+                  priority
+                  sizes="(min-width: 1024px) 26rem, (min-width: 640px) 26rem, 88vw"
+                  className="h-auto w-full object-cover"
+                />
+                {/* A very soft teal wash so the photo sits in the brand world without recolouring it. */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 rounded-2xl"
+                  style={{ background: "linear-gradient(180deg, transparent 55%, rgba(4,52,44,0.18))" }}
+                />
+              </div>
             </div>
 
             {/* The token-built Continuity Card preview, floated over the lower edge of the photo on
