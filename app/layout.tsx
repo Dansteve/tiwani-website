@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "./components/ui/sonner";
-import { CookieConsent } from "./components/CookieConsent";
+import { Toaster } from "@/components/ui/sonner";
+import { CookieConsent } from "@/components/CookieConsent";
 
 // Inter, the shared TIWANI font system (parity with tiwani-app, which also loads Inter via
 // next/font). Exposed as the --font-sans variable so the token in globals.css resolves to the

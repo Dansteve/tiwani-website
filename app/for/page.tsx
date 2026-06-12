@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { SiteHeader } from "../components/SiteHeader";
-import { SiteFooter } from "../components/SiteFooter";
-import { Reveal } from "../components/Reveal";
-import { Button } from "../components/ui/button";
-import { NonClinicalNote } from "../components/sections/NonClinicalNote";
-import { SupportCta } from "../components/sections/SupportCta";
-import { AUDIENCES } from "../lib/audiences";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { Reveal } from "@/components/Reveal";
+import { Button } from "@/components/ui/button";
+import { NonClinicalNote } from "@/components/sections/NonClinicalNote";
+import { SupportCta } from "@/components/sections/SupportCta";
+import { AUDIENCES } from "@/lib/audiences";
 
 export const metadata: Metadata = {
   title: "Who TIWANI is for | TIWANI",

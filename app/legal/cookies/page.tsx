@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { LegalPage } from "../../components/LegalPage";
-import { CookieSettingsButton } from "../../components/CookieSettingsButton";
+import { LegalPage } from "@/components/LegalPage";
+import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 
 export const metadata: Metadata = {
   title: "Cookie Policy | TIWANI",

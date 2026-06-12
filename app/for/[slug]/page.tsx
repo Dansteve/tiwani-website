@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ArrowLeft } from "lucide-react";
-import { SiteHeader } from "../../components/SiteHeader";
-import { SiteFooter } from "../../components/SiteFooter";
-import { Reveal } from "../../components/Reveal";
-import { Button } from "../../components/ui/button";
-import { ResourceList } from "../../components/sections/ResourceList";
-import { NonClinicalNote } from "../../components/sections/NonClinicalNote";
-import { SupportCta } from "../../components/sections/SupportCta";
-import { AUDIENCES, AUDIENCE_SLUGS, getAudience } from "../../lib/audiences";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { Reveal } from "@/components/Reveal";
+import { Button } from "@/components/ui/button";
+import { ResourceList } from "@/components/sections/ResourceList";
+import { NonClinicalNote } from "@/components/sections/NonClinicalNote";
+import { SupportCta } from "@/components/sections/SupportCta";
+import { AUDIENCES, AUDIENCE_SLUGS, getAudience } from "@/lib/audiences";
 
 type Params = Promise<{ slug: string }>;
 

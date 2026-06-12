@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { SiteFooter } from "../components/SiteFooter";
-import { Wordmark } from "../components/Wordmark";
-import { WaitlistForm } from "../components/WaitlistForm";
+import { SiteFooter } from "@/components/SiteFooter";
+import { Wordmark } from "@/components/Wordmark";
+import { WaitlistForm } from "@/components/WaitlistForm";
 
 export const metadata: Metadata = {
   title: "Join the waitlist | TIWANI",

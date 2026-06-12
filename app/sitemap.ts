@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { AUDIENCE_SLUGS } from "./lib/audiences";
+import { AUDIENCE_SLUGS } from "@/lib/audiences";
 
 // A static sitemap, emitted to out/sitemap.xml on the static export (basic SEO). URLs carry the
 // trailing slash to match next.config.ts (trailingSlash: true) and the per-page canonicals.

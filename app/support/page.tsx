@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Heart, Share2, Lock, Mail, ArrowRight } from "lucide-react";
-import { LegalPage } from "../components/LegalPage";
+import { LegalPage } from "@/components/LegalPage";
 
 export const metadata: Metadata = {
   title: "Support our work | TIWANI",

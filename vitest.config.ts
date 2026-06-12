@@ -4,7 +4,11 @@ import { defineConfig } from "vitest/config";
 // no DOM and no network, so the default environment is fine. Keep the suite fast and isolated.
 export default defineConfig({
   test: {
-    include: ["app/**/*.test.{ts,tsx}"],
+    include: [
+      "app/**/*.test.{ts,tsx}",
+      "lib/**/*.test.{ts,tsx}",
+      "components/**/*.test.{ts,tsx}",
+    ],
     environment: "node",
   },
 });

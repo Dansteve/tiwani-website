@@ -1,7 +1,11 @@
 @import "tailwindcss";
 
-/* Tailwind v4 scans these for utility classes (the app/ tree). */
-@source "./**/*.{js,ts,jsx,tsx}";
+/* Tailwind v4 scans these for utility classes. components/ and lib/ live at the repo root
+   (siblings of app/) after the page-routes-only restructure, so scan all three explicitly
+   (globals.css sits in app/, hence the ../ prefixes). */
+@source "../app/**/*.{js,ts,jsx,tsx}";
+@source "../components/**/*.{js,ts,jsx,tsx}";
+@source "../lib/**/*.{js,ts,jsx,tsx}";
 
 @custom-variant dark (&:is(.dark *));
 

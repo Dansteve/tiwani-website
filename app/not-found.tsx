@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { Wordmark } from "./components/Wordmark";
+import { Wordmark } from "@/components/Wordmark";
 
 // The branded 404 (Next renders this for any unmatched route and writes it to out/404.html on the
 // static export, which Firebase serves for not-found paths). On-brand surfaces come from the
