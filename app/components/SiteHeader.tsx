@@ -19,7 +19,13 @@ export function SiteHeader() {
           <Wordmark className="text-xl" />
         </Link>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-4">
+          <Link
+            href="/for"
+            className="hidden rounded-md text-sm font-medium text-tiwani-dark transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:inline-flex"
+          >
+            Who it&rsquo;s for
+          </Link>
           <DashboardLink className="hidden sm:inline-flex" />
           <Button asChild variant="cta-primary" size="cta-sm">
             <Link href="/waitlist">
