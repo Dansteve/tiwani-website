@@ -1,0 +1,43 @@
+name: CI
+
+# Frontend CI for the marketing/waitlist site (Expert Review M2: "CI runs backend
+# only; add a frontend job (tsc + ESLint + Vitest) for app + website"). The website
+# had no CI; this is it. Mirrors tiwani-app's pipeline: a type error, a lint error, a
+# failing unit test, or a broken build fails the job, so a regression cannot merge.
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # tsc --noEmit: a type error anywhere fails the job (the "prove it bites" gate).
+      - name: Typecheck
+        run: npm run typecheck
+
+      # next lint (the repo's configured linter). Deprecated upstream but still the
+      # script this project ships; kept as-is so CI matches local `npm run lint`.
+      - name: Lint
+        run: npm run lint
+
+      # vitest run via the test:run script (NOT the bare `test` script, which is watch
+      # mode and would hang CI). Covers the waitlist pure functions (validation + the
+      # two field mappings).
+      - name: Test
+        run: npm run test:run
+
+      - name: Build
+        run: npm run build
