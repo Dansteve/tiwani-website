@@ -36,7 +36,6 @@ export function SiteFooter() {
               href="https://www.instagram.com/tiwanilife/reels/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="TIWANI on Instagram"
               className="inline-flex items-center gap-3 text-sm text-white/90 transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <svg
