@@ -42,9 +42,12 @@ export function Hero() {
 
           <Reveal delayMs={120}>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              You coordinate care for someone you love. TIWANI is the Life Continuity
-              platform that helps you do it without your own life, your work, your
-              friendships, your community, quietly narrowing.
+              You coordinate care for someone you love. TIWANI helps you prepare, adapt
+              and keep participating in life, so work, friendships, family, culture and
+              community do not quietly disappear.
+            </p>
+            <p className="mt-3 text-base font-medium text-tiwani-dark">
+              Private and non-clinical.
             </p>
           </Reveal>
 

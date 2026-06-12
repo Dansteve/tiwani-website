@@ -34,7 +34,7 @@ export function AudienceSection() {
             </Reveal>
             <Reveal delayMs={60}>
               <h2 className="mt-4 text-3xl font-semibold leading-tight text-tiwani-dark sm:text-4xl">
-                Built for the Coordinator, across a whole life
+                Built for the one holding it all together
               </h2>
             </Reveal>
             <Reveal delayMs={120}>
