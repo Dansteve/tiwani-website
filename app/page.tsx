@@ -4,6 +4,7 @@ import { RefCardBanner } from "./components/RefCardBanner";
 import { Hero } from "./components/sections/Hero";
 import { ProblemSection } from "./components/sections/ProblemSection";
 import { FeaturesSection } from "./components/sections/FeaturesSection";
+import { DashboardPreview } from "./components/sections/DashboardPreview";
 import { AudienceSection } from "./components/sections/AudienceSection";
 import { FinalCta } from "./components/sections/FinalCta";
 
@@ -20,6 +21,7 @@ export default function HomePage() {
         <Hero />
         <ProblemSection />
         <FeaturesSection />
+        <DashboardPreview />
         <AudienceSection />
         <FinalCta />
       </main>

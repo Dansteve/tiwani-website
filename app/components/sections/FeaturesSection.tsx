@@ -45,7 +45,7 @@ function FeatureCard({ feature, delayMs }: { feature: Feature; delayMs: number }
   const Icon = feature.icon;
   return (
     <Reveal as="li" delayMs={delayMs} className="h-full">
-      <div className="flex h-full flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition-colors hover:border-primary/30 sm:p-7">
+      <div className="flex h-full flex-col rounded-xl border border-border bg-card p-6 shadow-sm transition-colors hover:border-primary/30 sm:p-7">
         <span className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
           <Icon className="size-5" aria-hidden="true" />
         </span>
