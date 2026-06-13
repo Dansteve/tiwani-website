@@ -137,7 +137,8 @@ export function DashboardPreview() {
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
               Your six Life Chapters, each with a clear status and your latest preparation, above one
               honest read on whether life is holding steady or quietly narrowing. This is the
-              dashboard you open, calm, glanceable, and never clinical.
+              dashboard you open, calm, glanceable, and never clinical. And when you need a hand,
+              your Village is one tap away.
             </p>
           </Reveal>
         </div>

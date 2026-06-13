@@ -34,7 +34,9 @@ export function AudienceSection() {
                 outcome and carries more than their share, TIWANI is for you. We are
                 starting with families caring for a child with additional needs, and
                 building toward care across the lifespan, including older adults and
-                long-term conditions.
+                long-term conditions. If you care for more than one person, TIWANI keeps
+                each of them separate, with their own plans, their own card, and their own
+                Village.
               </p>
             </Reveal>
             <Reveal delayMs={180}>
