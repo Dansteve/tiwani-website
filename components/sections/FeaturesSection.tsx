@@ -1,4 +1,4 @@
-import { ClipboardList, Activity, Share2, Bell, type LucideIcon } from "lucide-react";
+import { ClipboardList, Activity, Share2, Bell, Users, type LucideIcon } from "lucide-react";
 import { Reveal } from "../Reveal";
 
 // What TIWANI does: the four real product capabilities (Product.md), in plain, non-clinical
@@ -31,7 +31,7 @@ const FEATURES: Feature[] = [
     icon: Share2,
     eyebrow: "The Continuity Card",
     title: "Hand someone a clear plan in one tap",
-    body: "Share a one-page support plan with a teacher, an employer, or a carer, so you never have to explain from scratch again. It carries what helps and what to avoid, and no personal data travels in the link.",
+    body: "Share a one-page support plan with a teacher, an employer, or a carer, so you never have to explain from scratch again. It carries what helps and what to avoid, the person's name is optional, and you can stop access at any time.",
   },
   {
     icon: Bell,
@@ -39,12 +39,26 @@ const FEATURES: Feature[] = [
     title: "A heads-up before things tip over, not after",
     body: "When an area of life has been under sustained pressure, TIWANI gives you a gentle, dismissible heads-up and points to real support, from organisations like Carers UK, IPSEA, and SENDIASS. It signposts, never diagnoses.",
   },
+  {
+    icon: Users,
+    eyebrow: "Your Village",
+    title: "Ask for a hand with one specific thing",
+    body: "Caring is not a solo job. Post a single, bounded need, a lift on Thursday, a meal, an hour, and the trusted people you invite can pick it up, so help is one clear ask, not a vague “let me know.” You choose who is in your Village, and you can take anyone out at any time.",
+  },
 ];
 
-function FeatureCard({ feature, delayMs }: { feature: Feature; delayMs: number }) {
+function FeatureCard({
+  feature,
+  delayMs,
+  wide = false,
+}: {
+  feature: Feature;
+  delayMs: number;
+  wide?: boolean;
+}) {
   const Icon = feature.icon;
   return (
-    <Reveal as="li" delayMs={delayMs} className="h-full">
+    <Reveal as="li" delayMs={delayMs} className={wide ? "h-full sm:col-span-2" : "h-full"}>
       <div className="flex h-full flex-col rounded-xl border border-border bg-card p-6 shadow-sm transition-colors hover:border-primary/30 sm:p-7">
         <span className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
           <Icon className="size-5" aria-hidden="true" />
@@ -84,7 +98,7 @@ export function FeaturesSection() {
           <Reveal delayMs={120}>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
               Not another task list. TIWANI turns what you already know into structured,
-              reusable preparation, and it watches the thing no other tool does: whether
+              reusable preparation, and it watches something most tools miss: whether
               your family&rsquo;s life is holding steady.
             </p>
           </Reveal>
@@ -92,7 +106,14 @@ export function FeaturesSection() {
 
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:gap-6">
           {FEATURES.map((feature, i) => (
-            <FeatureCard key={feature.title} feature={feature} delayMs={i * 80} />
+            <FeatureCard
+              key={feature.title}
+              feature={feature}
+              delayMs={i * 80}
+              // An odd number of cards leaves the last one alone on the 2-col grid: span it so it reads as a
+              // deliberate wide closer ("and there is more"), not an orphan.
+              wide={FEATURES.length % 2 === 1 && i === FEATURES.length - 1}
+            />
           ))}
         </ul>
       </div>
