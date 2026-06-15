@@ -25,7 +25,7 @@ const FEATURES: Feature[] = [
     icon: Activity,
     eyebrow: "An honest signal",
     title: "See whether life is holding or quietly narrowing",
-    body: "Your Life Continuity Index: a simple read on whether life is holding or quietly narrowing, per area of life and overall. It builds quietly from two-tap check-ins after the things you prepare for. One honest read on how you are really doing, so you are not guessing.",
+    body: "Your Life Continuity Index: a simple signal of whether life is holding or quietly narrowing, per area of life and overall. It builds quietly from two-tap check-ins after the things you prepare for. A simple signal of how daily life is holding up, not a measurement of your health, so you are not guessing.",
   },
   {
     icon: Share2,
