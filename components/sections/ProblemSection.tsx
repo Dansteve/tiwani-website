@@ -47,8 +47,9 @@ export function ProblemSection() {
             <Image
               src="/images/care-connection.jpg"
               alt="A parent outdoors carrying their young child on their shoulders, both smiling"
-              width={1600}
-              height={2400}
+              width={1000}
+              height={1500}
+              loading="lazy"
               sizes="(min-width: 1024px) 28rem, (min-width: 640px) 28rem, 90vw"
               className="h-auto w-full object-cover"
             />
