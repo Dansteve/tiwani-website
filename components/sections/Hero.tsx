@@ -79,10 +79,10 @@ export function Hero() {
             <div className="rounded-[2rem] bg-tiwani-mid/20 p-4 shadow-xl ring-1 ring-inset ring-tiwani-mid/40">
               <div className="relative overflow-hidden rounded-2xl">
                 <Image
-                  src="/images/care-hero.jpg"
-                  alt="A mother and her daughter sharing a warm hug at home, both smiling"
+                  src="/images/care-hero-family.jpg"
+                  alt="A family at home, sharing a warm and relaxed moment together on the sofa"
                   width={1600}
-                  height={1062}
+                  height={900}
                   priority
                   sizes="(min-width: 1024px) 26rem, (min-width: 640px) 26rem, 88vw"
                   className="h-auto w-full object-cover"
