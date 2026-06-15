@@ -81,8 +81,8 @@ export function Hero() {
                 <Image
                   src="/images/care-hero.jpg"
                   alt="A mother and her daughter sharing a warm hug at home, both smiling"
-                  width={1600}
-                  height={1062}
+                  width={1000}
+                  height={664}
                   priority
                   sizes="(min-width: 1024px) 26rem, (min-width: 640px) 26rem, 88vw"
                   className="h-auto w-full object-cover"
