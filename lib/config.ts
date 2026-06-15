@@ -10,6 +10,17 @@ export const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL ||
   (process.env.NODE_ENV === "production" ? PROD_APP_URL : DEV_APP_URL);
 
+// The public marketing domain(s). The "Go to dashboard" entry to the app (DashboardLink) is hidden
+// on these, the public face during the closed beta, so the app entry is not surfaced publicly, but
+// kept on the Firebase preview domain (tiwani-main.web.app) and localhost for testing. Both domains
+// serve the SAME static build, so the decision is made at runtime from window.location.hostname, not
+// at build time. Pure + exported so it unit-tests without a browser.
+export const PUBLIC_MARKETING_HOSTS = ["tiwanilife.com", "www.tiwanilife.com"];
+
+export function isPublicMarketingHost(hostname: string): boolean {
+  return PUBLIC_MARKETING_HOSTS.includes(hostname.trim().toLowerCase());
+}
+
 // The single home of the donation / "support our work" route, so every CTA points through one
 // constant and the route can move in ONE place. The full funding page (the case for support, the
 // Fundraising Regulator + Gift Aid + payment-processor posture) is owned by the legal-and-funding
