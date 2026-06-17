@@ -187,7 +187,7 @@ export function WaitlistForm() {
       <button
         type="submit"
         disabled={!canSubmit}
-        className="mt-8 inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-destructive text-base font-medium text-destructive-foreground shadow-sm transition-colors hover:bg-tiwani-coral/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:cursor-not-allowed disabled:bg-switch-background disabled:text-foreground/60 disabled:shadow-none"
+        className="mt-8 inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-cta text-base font-medium text-cta-foreground shadow-sm transition-colors hover:bg-tiwani-coral/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:cursor-not-allowed disabled:bg-switch-background disabled:text-foreground/60 disabled:shadow-none"
       >
         {isLoading ? (
           <>

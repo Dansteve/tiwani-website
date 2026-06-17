@@ -23,7 +23,7 @@ const buttonVariants = cva(
         // component everywhere (header, hero, final CTA) instead of a hand-rolled <a>. Coral is the
         // sparing accent (Docs/Brand.md); the quiet teal-outline pairing is the secondary.
         "cta-primary":
-          "rounded-full bg-destructive text-destructive-foreground shadow-sm hover:bg-tiwani-coral/90",
+          "rounded-full bg-cta text-cta-foreground shadow-sm hover:bg-tiwani-coral/90",
         "cta-secondary":
           "rounded-full border border-primary text-primary hover:bg-primary/5",
       },

@@ -67,21 +67,26 @@
   --accent-foreground: #04342C;
   /* CTA/button coral: a slightly deeper coral than the decorative --tiwani-coral (#D85A30) so white
      button text meets WCAG AA (4.73:1 vs 3.87:1). The brand coral stays --tiwani-coral for the logo
-     dot + decorative accents. (Task 11 a11y, 2026-06-12.) */
-  --destructive: #C24F26;
+     dot + decorative accents. (Task 11 a11y, 2026-06-12.) Coral lives ONLY here + on accents, NEVER
+     on a "bad news" state, parity with the app (Brand.md / Decisions.md D5, 2026-06-16). */
+  --cta: #C24F26;
+  --cta-foreground: #ffffff;
+  /* Functional errors + irreversible actions ONLY (warm red, distinct from the coral CTA above). */
+  --destructive: #B23A2B;
   --destructive-foreground: #ffffff;
 
-  /* Dashboard status semantics (Product.md §4.3 / §4.6 / §4.9), harmonized to the palette.
-     Status is always colour + label + icon, never colour alone (accessibility). */
+  /* Dashboard status semantics (Product.md §4.3 / §4.6 / §4.9), harmonized to the palette. Status is
+     always colour + label + icon, never colour alone (accessibility). The concern escalation runs
+     teal -> amber -> deep amber, never coral/red (D5 amendment 2026-06-16). */
   --success: #1D9E75;            /* stable / positive (teal-mid) */
   --success-foreground: #ffffff;
   --warning: #C8862B;           /* under pressure (warm amber) */
   --warning-foreground: #2C2C2A;
-  --critical: #D85A30;          /* needs attention (coral, = destructive) */
+  --critical: #A35E14;          /* needs attention (deep amber, calm, NOT coral) */
   --critical-foreground: #ffffff;
   --status-stable: #1D9E75;
   --status-pressure: #C8862B;
-  --status-critical: #D85A30;
+  --status-critical: #A35E14;
 
   --border: rgba(44, 44, 42, 0.12);
   --input: transparent;
@@ -124,19 +129,22 @@
   --muted-foreground: #B7B3A8;
   --accent: #04342C;
   --accent-foreground: #E1F5EE;
-  --destructive: #E27A52;
+  --cta: #E27A52;
+  --cta-foreground: #2C1810;
+  --destructive: #E47A66;        /* functional errors + irreversible actions ONLY (warm red, not coral) */
   --destructive-foreground: #2C1810;
 
-  /* Dashboard status semantics, brightened for the dark surface. */
+  /* Dashboard status semantics, brightened for the dark surface. Concern ramp teal -> amber -> deep
+     amber; coral freed from "bad news" (D5 amendment). */
   --success: #2BB888;
   --success-foreground: #04342C;
   --warning: #E0A03E;
   --warning-foreground: #2C2C2A;
-  --critical: #E27A52;
+  --critical: #E0934A;
   --critical-foreground: #2C1810;
   --status-stable: #2BB888;
   --status-pressure: #E0A03E;
-  --status-critical: #E27A52;
+  --status-critical: #E0934A;
 
   --border: rgba(236, 234, 227, 0.14);
   --input: #243029;
@@ -176,6 +184,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-cta: var(--cta);
+  --color-cta-foreground: var(--cta-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-success: var(--success);
