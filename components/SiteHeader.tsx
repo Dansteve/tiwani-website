@@ -4,7 +4,7 @@ import { Wordmark } from "./Wordmark";
 import { DashboardLink } from "./DashboardLink";
 import { Button } from "./ui/button";
 
-// The fixed top navigation: the wordmark, a quiet "Try out beta now" link to the tiwani-app (a plain
+// The fixed top navigation: the wordmark, a quiet "Try the beta" link to the tiwani-app (a plain
 // cross-origin navigation, the two are separate Firebase sites; DashboardLink resolves the target per
 // marketing host, so each domain points at its matching app subdomain), and the coral "Join waitlist"
 // CTA. The bar is a translucent cream with a hairline teal border so the page reads through it. Server
@@ -27,7 +27,7 @@ export function SiteHeader() {
           >
             Who it&rsquo;s for
           </Link>
-          <DashboardLink className="hidden sm:inline-flex" />
+          <DashboardLink className="inline-flex" />
           <Button asChild variant="cta-primary" size="cta-sm">
             <Link href="/waitlist">
               Join waitlist

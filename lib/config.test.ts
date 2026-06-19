@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 
 import { appUrlForHost, APP_URL } from "./config";
 
-// appUrlForHost resolves the "Try out beta now" target from the current marketing host: each public
+// appUrlForHost resolves the "Try the beta" target from the current marketing host: each public
 // domain points to its matching app subdomain (same brand TLD); the Firebase preview domain, localhost,
 // and unknown hosts fall back to APP_URL. Pure, so it is asserted here without a browser.
 describe("appUrlForHost", () => {

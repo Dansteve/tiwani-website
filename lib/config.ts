@@ -1,4 +1,4 @@
-// Where the "Try out beta now" button sends users: the tiwani-app (Coordinator dashboard).
+// Where the "Try the beta" button sends users: the tiwani-app (Coordinator dashboard).
 // The app and website are on different domains (separate Firebase Hosting sites), so this is a
 // plain cross-origin link. Local dev points to the local Next.js app; the production build
 // (served on Firebase) points to the Firebase-hosted app. Override per environment with
@@ -10,7 +10,7 @@ export const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL ||
   (process.env.NODE_ENV === "production" ? PROD_APP_URL : DEV_APP_URL);
 
-// Each public marketing domain sends "Try out beta now" to its OWN app subdomain, so a tester stays on
+// Each public marketing domain sends "Try the beta" to its OWN app subdomain, so a tester stays on
 // the same brand domain: tiwanilife.com -> app.tiwanilife.com, tiwanilife.co.uk -> app.tiwanilife.co.uk
 // (and the www variants). The Firebase preview domain (tiwani-main.web.app) and localhost are not in the
 // map and fall back to APP_URL. Both custom domains serve the SAME static build, so the host is read at

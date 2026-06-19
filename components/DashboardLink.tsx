@@ -7,7 +7,7 @@ import { APP_URL, appUrlForHost } from "../lib/config";
 import { buttonVariants } from "./ui/button";
 import { cn } from "./ui/utils";
 
-// "Try out beta now" -> the tiwani-app. The TARGET is resolved from the current marketing host so each
+// "Try the beta" -> the tiwani-app. The TARGET is resolved from the current marketing host so each
 // domain sends testers to its matching app domain (tiwanilife.com -> app.tiwanilife.com,
 // tiwanilife.co.uk -> app.tiwanilife.co.uk; the Firebase preview domain + localhost fall back to
 // APP_URL). The host is a browser-only value, so the href STARTS at the APP_URL fallback (SSR-safe, so
@@ -32,7 +32,8 @@ export function DashboardLink({ className }: { className?: string }) {
       onClick={go}
       className={cn(buttonVariants({ variant: "cta-secondary", size: "cta-sm" }), className)}
     >
-      Try out beta now
+      <span className="sm:hidden">Try beta</span>
+      <span className="hidden sm:inline">Try the beta</span>
       <ArrowRight className="size-4" aria-hidden="true" />
     </a>
   );
