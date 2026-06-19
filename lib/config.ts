@@ -10,16 +10,20 @@ export const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL ||
   (process.env.NODE_ENV === "production" ? PROD_APP_URL : DEV_APP_URL);
 
-// Each public marketing domain sends "Try the beta" to its OWN app subdomain, so a tester stays on
-// the same brand domain: tiwanilife.com -> app.tiwanilife.com, tiwanilife.co.uk -> app.tiwanilife.co.uk
-// (and the www variants). The Firebase preview domain (tiwani-main.web.app) and localhost are not in the
-// map and fall back to APP_URL. Both custom domains serve the SAME static build, so the host is read at
-// runtime from window.location.hostname. Pure + exported so it unit-tests without a browser.
+// "Try the beta" sends each marketing host to the app. The END STATE maps each brand domain onto its
+// matching app subdomain (tiwanilife.com -> app.tiwanilife.com, tiwanilife.co.uk -> app.tiwanilife.co.uk,
+// and the www variants), so a tester stays on the same brand domain.
+//
+// TEMPORARY: those app subdomains are not live yet, so the values point at the WORKING default APP_URL
+// for now (the button works for testers today). To switch a brand domain onto its subdomain once
+// app.tiwanilife.com / app.tiwanilife.co.uk resolve, set its value to the subdomain URL shown beside it.
+// The Firebase preview domain + localhost already fall back to APP_URL. Pure + exported so it unit-tests
+// without a browser; the host is read at runtime from window.location.hostname.
 const APP_URL_BY_MARKETING_HOST: Record<string, string> = {
-  "tiwanilife.com": "https://app.tiwanilife.com",
-  "www.tiwanilife.com": "https://app.tiwanilife.com",
-  "tiwanilife.co.uk": "https://app.tiwanilife.co.uk",
-  "www.tiwanilife.co.uk": "https://app.tiwanilife.co.uk",
+  "tiwanilife.com": APP_URL, // -> "https://app.tiwanilife.com" once that subdomain is live
+  "www.tiwanilife.com": APP_URL, // -> "https://app.tiwanilife.com"
+  "tiwanilife.co.uk": APP_URL, // -> "https://app.tiwanilife.co.uk" once that subdomain is live
+  "www.tiwanilife.co.uk": APP_URL, // -> "https://app.tiwanilife.co.uk"
 };
 
 export function appUrlForHost(hostname: string): string {
