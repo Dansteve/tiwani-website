@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
-import { APP_URL, appUrlForHost } from "../lib/config";
+import { APP_URL, appUrlForHost, BETA_CTA_ENABLED } from "../lib/config";
 import { buttonVariants } from "./ui/button";
 import { cn } from "./ui/utils";
 
@@ -25,6 +25,10 @@ export function DashboardLink({ className }: { className?: string }) {
     if (!href) return;
     window.location.href = `${href}${href.includes("?") ? "&" : "?"}t=${Date.now()}`;
   };
+
+  // Held off until the app subdomains finish propagating (lib/config.BETA_CTA_ENABLED): render nothing,
+  // so the public site never surfaces the entry before its branded domain is live.
+  if (!BETA_CTA_ENABLED) return null;
 
   return (
     <a

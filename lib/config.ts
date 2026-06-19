@@ -10,6 +10,12 @@ export const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL ||
   (process.env.NODE_ENV === "production" ? PROD_APP_URL : DEV_APP_URL);
 
+// The "Try the beta" entry to the app is HELD OFF until the app subdomains (app.tiwanilife.com /
+// app.tiwanilife.co.uk) finish DNS propagation, so the button is not surfaced before its branded domain
+// is live (DashboardLink renders nothing while this is false). To turn it on once they resolve: set this
+// true AND point the brand domains in APP_URL_BY_MARKETING_HOST below at their subdomains, then redeploy.
+export const BETA_CTA_ENABLED: boolean = false;
+
 // "Try the beta" sends each marketing host to the app. The END STATE maps each brand domain onto its
 // matching app subdomain (tiwanilife.com -> app.tiwanilife.com, tiwanilife.co.uk -> app.tiwanilife.co.uk,
 // and the www variants), so a tester stays on the same brand domain.
