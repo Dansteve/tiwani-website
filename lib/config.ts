@@ -1,4 +1,4 @@
-// Where the "Go to dashboard" button sends users: the tiwani-app (Coordinator dashboard).
+// Where the "Try out beta now" button sends users: the tiwani-app (Coordinator dashboard).
 // The app and website are on different domains (separate Firebase Hosting sites), so this is a
 // plain cross-origin link. Local dev points to the local Next.js app; the production build
 // (served on Firebase) points to the Firebase-hosted app. Override per environment with
@@ -10,15 +10,20 @@ export const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL ||
   (process.env.NODE_ENV === "production" ? PROD_APP_URL : DEV_APP_URL);
 
-// The public marketing domain(s). The "Go to dashboard" entry to the app (DashboardLink) is hidden
-// on these, the public face during the closed beta, so the app entry is not surfaced publicly, but
-// kept on the Firebase preview domain (tiwani-main.web.app) and localhost for testing. Both domains
-// serve the SAME static build, so the decision is made at runtime from window.location.hostname, not
-// at build time. Pure + exported so it unit-tests without a browser.
-export const PUBLIC_MARKETING_HOSTS = ["tiwanilife.com", "www.tiwanilife.com"];
+// Each public marketing domain sends "Try out beta now" to its OWN app subdomain, so a tester stays on
+// the same brand domain: tiwanilife.com -> app.tiwanilife.com, tiwanilife.co.uk -> app.tiwanilife.co.uk
+// (and the www variants). The Firebase preview domain (tiwani-main.web.app) and localhost are not in the
+// map and fall back to APP_URL. Both custom domains serve the SAME static build, so the host is read at
+// runtime from window.location.hostname. Pure + exported so it unit-tests without a browser.
+const APP_URL_BY_MARKETING_HOST: Record<string, string> = {
+  "tiwanilife.com": "https://app.tiwanilife.com",
+  "www.tiwanilife.com": "https://app.tiwanilife.com",
+  "tiwanilife.co.uk": "https://app.tiwanilife.co.uk",
+  "www.tiwanilife.co.uk": "https://app.tiwanilife.co.uk",
+};
 
-export function isPublicMarketingHost(hostname: string): boolean {
-  return PUBLIC_MARKETING_HOSTS.includes(hostname.trim().toLowerCase());
+export function appUrlForHost(hostname: string): string {
+  return APP_URL_BY_MARKETING_HOST[hostname.trim().toLowerCase()] ?? APP_URL;
 }
 
 // The single home of the donation / "support our work" route, so every CTA points through one

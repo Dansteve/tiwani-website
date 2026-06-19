@@ -4,10 +4,11 @@ import { Wordmark } from "./Wordmark";
 import { DashboardLink } from "./DashboardLink";
 import { Button } from "./ui/button";
 
-// The fixed top navigation: the wordmark, a quiet "Go to dashboard" link to the tiwani-app (a
-// plain cross-origin navigation, the two are separate Firebase sites), and the coral "Join
-// waitlist" CTA. The bar is a translucent cream with a hairline teal border so the page reads
-// through it. Server component: the links are static and APP_URL resolves at build.
+// The fixed top navigation: the wordmark, a quiet "Try out beta now" link to the tiwani-app (a plain
+// cross-origin navigation, the two are separate Firebase sites; DashboardLink resolves the target per
+// marketing host, so each domain points at its matching app subdomain), and the coral "Join waitlist"
+// CTA. The bar is a translucent cream with a hairline teal border so the page reads through it. Server
+// component; DashboardLink is the one client island (it reads the host at runtime).
 export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-primary/10 bg-background/80 backdrop-blur-md">
